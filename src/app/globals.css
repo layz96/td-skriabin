@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-primary antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3 bg-primary text-white font-medium
+           rounded-none hover:bg-neutral-800 transition-all duration-200 text-sm tracking-wide uppercase;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center px-8 py-3 bg-accent text-white font-medium
+           rounded-none hover:bg-accent-dark transition-all duration-200 text-sm tracking-wide uppercase;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-3 border-2 border-primary text-primary font-medium
+           rounded-none hover:bg-primary hover:text-white transition-all duration-200 text-sm tracking-wide uppercase;
+  }
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+}
+
+/* Product card hover effect */
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+
+/* Modal overlay */
+.modal-overlay {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* Breadcrumb separator */
+.breadcrumb-separator::after {
+  content: '/';
+  margin: 0 0.5rem;
+  color: #999;
+}
