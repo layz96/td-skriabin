@@ -208,6 +208,13 @@ export default function Header() {
                 Бренды
               </Link>
               <Link
+                href="/calculator"
+                className="py-3 px-2 text-sm font-medium hover:bg-light transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Калькулятор
+              </Link>
+              <Link
                 href="/about"
                 className="py-3 px-2 text-sm font-medium hover:bg-light transition-colors"
                 onClick={() => setMenuOpen(false)}
