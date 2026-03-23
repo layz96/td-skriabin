@@ -47,7 +47,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/images/logo.png"
+              src="/td-skriabin/images/logo.png"
               alt="Скрябин Керамикс"
               width={48}
               height={48}
