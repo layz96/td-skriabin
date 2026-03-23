@@ -85,7 +85,7 @@ export default function HeroSection({
       {/* Parallax Background Image */}
       <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
         <Image
-          src="/td-skriabin/images/hero-bg.jpg"
+          src="/images/hero-bg.jpg"
           alt="Premium brick facade"
           fill
           className="object-cover"
