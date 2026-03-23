@@ -37,7 +37,7 @@ export const categories: Category[] = [
     name: "Облицовочный кирпич",
     description:
       "Клинкерный, ригельный кирпич и кирпич ручной формовки для фасадов зданий. Широкий выбор цветов и фактур от ведущих производителей.",
-    image: "/images/cat-brick.jpg",
+    image: "/td-skriabin/images/cat-brick.jpg",
     productCount: 186,
   },
   {
@@ -45,7 +45,7 @@ export const categories: Category[] = [
     name: "Клинкерная брусчатка",
     description:
       "Тротуарная клинкерная брусчатка для мощения дорожек, площадок и парковок. Высокая прочность и долговечность.",
-    image: "/images/cat-paving.jpg",
+    image: "/td-skriabin/images/cat-paving.jpg",
     productCount: 54,
   },
   {
@@ -53,7 +53,7 @@ export const categories: Category[] = [
     name: "Фасадная плитка",
     description:
       "Клинкерная фасадная плитка и плитка ручной формовки для облицовки фасадов, цоколей и интерьеров.",
-    image: "/images/cat-tile.jpg",
+    image: "/td-skriabin/images/cat-tile.jpg",
     productCount: 48,
   },
   {
@@ -61,7 +61,7 @@ export const categories: Category[] = [
     name: "Клинкерная черепица",
     description:
       "Керамическая и клинкерная черепица для кровли. Натуральный материал с гарантией более 50 лет.",
-    image: "/images/cat-roof.jpg",
+    image: "/td-skriabin/images/cat-roof.jpg",
     productCount: 31,
   },
 ];
@@ -73,7 +73,7 @@ export const brands: Brand[] = [
     country: "Нидерланды",
     description:
       "Голландский производитель клинкерного кирпича премиум-класса. Более 100 лет традиций качества.",
-    logo: "/images/brand-nelissen.png",
+    logo: "/td-skriabin/images/brand-nelissen.png",
   },
   {
     slug: "sultan-ceramic",
@@ -81,7 +81,7 @@ export const brands: Brand[] = [
     country: "Россия",
     description:
       "Производитель клинкера методом жёсткой экструзии. Современное производство и контроль качества.",
-    logo: "/images/brand-sultan.png",
+    logo: "/td-skriabin/images/brand-sultan.png",
   },
   {
     slug: "real-brick",
@@ -89,7 +89,7 @@ export const brands: Brand[] = [
     country: "Россия",
     description:
       "Многокомпонентные минеральные продукты — плитка, кирпич, черепица. Инновационные технологии.",
-    logo: "/images/brand-realbrick.png",
+    logo: "/td-skriabin/images/brand-realbrick.png",
   },
   {
     slug: "terramatic",
@@ -97,7 +97,7 @@ export const brands: Brand[] = [
     country: "Россия",
     description:
       "Завод клинкера в Кургане. Российское производство европейского качества.",
-    logo: "/images/brand-terramatic.png",
+    logo: "/td-skriabin/images/brand-terramatic.png",
   },
   {
     slug: "bogandinskij",
@@ -105,7 +105,7 @@ export const brands: Brand[] = [
     country: "Россия",
     description:
       "Кирпич ручной формовки в разных цветах и форматах. Традиционные технологии производства.",
-    logo: "/images/brand-bogandinskij.png",
+    logo: "/td-skriabin/images/brand-bogandinskij.png",
   },
   {
     slug: "skriabin-ceramics",
@@ -113,7 +113,7 @@ export const brands: Brand[] = [
     country: "Россия",
     description:
       "Собственное производство клинкерного кирпича. Уникальность каждого изделия.",
-    logo: "/images/brand-skriabin.png",
+    logo: "/td-skriabin/images/brand-skriabin.png",
   },
 ];
 
@@ -128,8 +128,8 @@ export const products: Product[] = [
     pricePerUnit: 98,
     pricePerSqm: 5488,
     unit: "шт",
-    image: "/images/prod-1.jpg",
-    images: ["/images/prod-1.jpg", "/images/prod-1-2.jpg"],
+    image: "/td-skriabin/images/prod-1.jpg",
+    images: ["/td-skriabin/images/prod-1.jpg", "/td-skriabin/images/prod-1-2.jpg"],
     specs: {
       Формат: "210×100×50 мм",
       Пустотность: "Полнотелый",
@@ -153,8 +153,8 @@ export const products: Product[] = [
     pricePerUnit: 42,
     pricePerSqm: 2352,
     unit: "шт",
-    image: "/images/prod-2.jpg",
-    images: ["/images/prod-2.jpg"],
+    image: "/td-skriabin/images/prod-2.jpg",
+    images: ["/td-skriabin/images/prod-2.jpg"],
     specs: {
       Формат: "250×120×65 мм",
       Пустотность: "Пустотелый",
@@ -178,8 +178,8 @@ export const products: Product[] = [
     pricePerUnit: 36,
     pricePerSqm: 2016,
     unit: "шт",
-    image: "/images/prod-3.jpg",
-    images: ["/images/prod-3.jpg"],
+    image: "/td-skriabin/images/prod-3.jpg",
+    images: ["/td-skriabin/images/prod-3.jpg"],
     specs: {
       Формат: "250×120×65 мм",
       Пустотность: "Пустотелый",
@@ -203,8 +203,8 @@ export const products: Product[] = [
     pricePerUnit: 38,
     pricePerSqm: 2128,
     unit: "шт",
-    image: "/images/prod-4.jpg",
-    images: ["/images/prod-4.jpg"],
+    image: "/td-skriabin/images/prod-4.jpg",
+    images: ["/td-skriabin/images/prod-4.jpg"],
     specs: {
       Формат: "250×120×65 мм",
       Пустотность: "Полнотелый",
@@ -228,8 +228,8 @@ export const products: Product[] = [
     pricePerUnit: 28,
     pricePerSqm: 1568,
     unit: "шт",
-    image: "/images/prod-5.jpg",
-    images: ["/images/prod-5.jpg"],
+    image: "/td-skriabin/images/prod-5.jpg",
+    images: ["/td-skriabin/images/prod-5.jpg"],
     specs: {
       Формат: "250×120×65 мм",
       Пустотность: "Пустотелый",
@@ -253,8 +253,8 @@ export const products: Product[] = [
     pricePerUnit: 45,
     pricePerSqm: 2520,
     unit: "шт",
-    image: "/images/prod-6.jpg",
-    images: ["/images/prod-6.jpg"],
+    image: "/td-skriabin/images/prod-6.jpg",
+    images: ["/td-skriabin/images/prod-6.jpg"],
     specs: {
       Формат: "250×120×65 мм",
       Пустотность: "Полнотелый",
@@ -278,8 +278,8 @@ export const products: Product[] = [
     pricePerUnit: 62,
     pricePerSqm: 3472,
     unit: "шт",
-    image: "/images/prod-7.jpg",
-    images: ["/images/prod-7.jpg"],
+    image: "/td-skriabin/images/prod-7.jpg",
+    images: ["/td-skriabin/images/prod-7.jpg"],
     specs: {
       Формат: "200×100×52 мм",
       Вес: "2.0 кг",
@@ -302,8 +302,8 @@ export const products: Product[] = [
     pricePerUnit: 55,
     pricePerSqm: 3080,
     unit: "шт",
-    image: "/images/prod-8.jpg",
-    images: ["/images/prod-8.jpg"],
+    image: "/td-skriabin/images/prod-8.jpg",
+    images: ["/td-skriabin/images/prod-8.jpg"],
     specs: {
       Формат: "200×100×45 мм",
       Вес: "1.8 кг",
@@ -326,8 +326,8 @@ export const products: Product[] = [
     pricePerUnit: 78,
     pricePerSqm: 4368,
     unit: "шт",
-    image: "/images/prod-9.jpg",
-    images: ["/images/prod-9.jpg"],
+    image: "/td-skriabin/images/prod-9.jpg",
+    images: ["/td-skriabin/images/prod-9.jpg"],
     specs: {
       Формат: "240×71×14 мм",
       Вес: "0.4 кг",
@@ -350,8 +350,8 @@ export const products: Product[] = [
     pricePerUnit: 32,
     pricePerSqm: 1792,
     unit: "шт",
-    image: "/images/prod-10.jpg",
-    images: ["/images/prod-10.jpg"],
+    image: "/td-skriabin/images/prod-10.jpg",
+    images: ["/td-skriabin/images/prod-10.jpg"],
     specs: {
       Формат: "240×71×10 мм",
       Вес: "0.3 кг",
@@ -374,8 +374,8 @@ export const products: Product[] = [
     pricePerUnit: 145,
     pricePerSqm: 2175,
     unit: "шт",
-    image: "/images/prod-11.jpg",
-    images: ["/images/prod-11.jpg"],
+    image: "/td-skriabin/images/prod-11.jpg",
+    images: ["/td-skriabin/images/prod-11.jpg"],
     specs: {
       Формат: "420×330 мм",
       Вес: "3.5 кг",
@@ -398,8 +398,8 @@ export const products: Product[] = [
     pricePerUnit: 95,
     pricePerSqm: 1425,
     unit: "шт",
-    image: "/images/prod-12.jpg",
-    images: ["/images/prod-12.jpg"],
+    image: "/td-skriabin/images/prod-12.jpg",
+    images: ["/td-skriabin/images/prod-12.jpg"],
     specs: {
       Формат: "420×330 мм",
       Вес: "3.2 кг",

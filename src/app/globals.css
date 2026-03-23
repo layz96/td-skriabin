@@ -32,7 +32,74 @@
   }
 }
 
-/* Product card hover effect */
+/* ===== FLOATING BRICK ANIMATION ===== */
+@keyframes floatBrick {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-10px) rotate(-3deg);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(-25px) rotate(7deg);
+    opacity: 0.6;
+  }
+}
+
+.floating-brick {
+  animation: floatBrick 20s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+/* ===== GLOW EFFECT FOR BUTTONS ===== */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-glow:hover::before {
+  left: 100%;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(200, 149, 108, 0.4);
+}
+
+/* ===== PREMIUM CARD HOVER EFFECTS ===== */
+.premium-card {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.4s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(200, 149, 108, 0.2),
+    0 0 30px rgba(200, 149, 108, 0.08);
+  border-color: rgba(200, 149, 108, 0.3);
+}
+
+/* ===== PRODUCT CARD (legacy) ===== */
 .product-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -41,15 +108,69 @@
   box-shadow: 0 12px 40px rgba(0,0,0,0.1);
 }
 
-/* Modal overlay */
+/* ===== CATEGORY CARD PREMIUM ===== */
+.category-card {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.4s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(200, 149, 108, 0.15);
+  border-color: rgba(200, 149, 108, 0.4);
+}
+
+.category-card:hover .category-overlay {
+  opacity: 0.4;
+}
+
+.category-card:hover .category-image {
+  transform: scale(1.08);
+}
+
+/* ===== TEXTURE BACKGROUND ===== */
+.texture-bg {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(200, 149, 108, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(200, 149, 108, 0.03) 0%, transparent 50%);
+}
+
+/* ===== GOLD LINE SEPARATOR ===== */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c8956c, transparent);
+}
+
+/* ===== MODAL OVERLAY ===== */
 .modal-overlay {
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(4px);
 }
 
-/* Breadcrumb separator */
+/* ===== BREADCRUMB SEPARATOR ===== */
 .breadcrumb-separator::after {
   content: '/';
   margin: 0 0.5rem;
   color: #999;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c8956c;
 }

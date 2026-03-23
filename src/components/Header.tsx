@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { categories } from "@/data/products";
 import RequestModal from "./RequestModal";
@@ -44,13 +45,22 @@ export default function Header() {
       <header className="bg-white border-b border-neutral-200 sticky top-0 z-50">
         <div className="section-padding flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" className="flex flex-col">
-            <span className="text-2xl font-bold tracking-tight text-primary">
-              ТД СКРЯБИН
-            </span>
-            <span className="text-[10px] tracking-[0.3em] text-neutral-500 uppercase">
-              Премиальные фасадные материалы
-            </span>
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/images/logo.png"
+              alt="Скрябин Керамикс"
+              width={48}
+              height={48}
+              className="w-12 h-12 object-contain"
+            />
+            <div className="flex flex-col">
+              <span className="text-lg font-bold tracking-tight text-primary leading-tight">
+                СКРЯБИН КЕРАМИКС
+              </span>
+              <span className="text-[9px] tracking-[0.25em] text-neutral-500 uppercase">
+                Архитектурный клинкер
+              </span>
+            </div>
           </Link>
 
           {/* Desktop nav */}
