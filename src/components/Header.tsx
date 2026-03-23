@@ -13,8 +13,8 @@ export default function Header() {
 
   return (
     <>
-      {/* Top bar */}
-      <div className="bg-primary text-white text-xs">
+      {/* Top bar - hidden on mobile */}
+      <div className="hidden md:block bg-primary text-white text-xs">
         <div className="section-padding flex items-center justify-between py-2">
           <div className="flex items-center gap-6">
             <Link href="/about" className="hover:text-accent transition-colors">
