@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { products, categories } from "@/data/products";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import ProductCard from "@/components/ProductCard";
+import AnimatedProductCard from "@/components/AnimatedProductCard";
 import RequestModal from "@/components/RequestModal";
 import { notFound } from "next/navigation";
 import { useState } from "react";
@@ -46,24 +47,16 @@ export default function ProductPageClient({ slug }: { slug: string }) {
         {/* Left: Image + tabs */}
         <div>
           {/* Main image */}
-          <div className="aspect-[4/3] bg-gray-warm relative mb-4">
-            <div className="absolute inset-0 flex items-center justify-center text-neutral-400">
-              <svg
-                className="w-32 h-32 opacity-15"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
+          <div className="aspect-[4/3] bg-gray-warm relative mb-4 overflow-hidden">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 60vw"
+            />
             {product.inStock && (
-              <span className="absolute top-4 left-4 bg-green-600 text-white text-sm px-4 py-1.5 font-medium">
+              <span className="absolute top-4 left-4 bg-green-600/90 backdrop-blur-sm text-white text-sm px-4 py-1.5 font-medium">
                 В наличии
               </span>
             )}
@@ -71,18 +64,20 @@ export default function ProductPageClient({ slug }: { slug: string }) {
 
           {/* Thumbnail strip */}
           <div className="flex gap-2">
-            {[1, 2, 3].map((i) => (
+            {[0, 1, 2].map((i) => (
               <div
                 key={i}
-                className={`w-20 h-20 bg-gray-warm border-2 cursor-pointer ${
-                  i === 1 ? "border-accent" : "border-transparent"
+                className={`w-20 h-20 relative overflow-hidden border-2 cursor-pointer ${
+                  i === 0 ? "border-[#c8956c]" : "border-transparent"
                 }`}
               >
-                <div className="w-full h-full flex items-center justify-center text-neutral-300">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
+                <Image
+                  src={product.image}
+                  alt={`${product.name} ${i + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="80px"
+                />
               </div>
             ))}
           </div>
@@ -243,7 +238,7 @@ export default function ProductPageClient({ slug }: { slug: string }) {
           <h2 className="text-2xl font-bold mb-8">Похожие товары</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {relatedProducts.map((p) => (
-              <ProductCard key={p.id} product={p} />
+              <AnimatedProductCard key={p.id} product={p} />
             ))}
           </div>
         </section>

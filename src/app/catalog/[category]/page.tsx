@@ -1,6 +1,6 @@
 import { categories, products } from "@/data/products";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import ProductCard from "@/components/ProductCard";
+import AnimatedProductCard from "@/components/AnimatedProductCard";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -46,7 +46,7 @@ export default function CategoryPage({ params }: Props) {
       {categoryProducts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {categoryProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <AnimatedProductCard key={product.id} product={product} />
           ))}
         </div>
       ) : (

@@ -1,7 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { categories, products } from "@/data/products";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import ProductCard from "@/components/ProductCard";
+import AnimatedProductCard from "@/components/AnimatedProductCard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,25 +22,34 @@ export default function CatalogPage() {
       </p>
 
       {/* Categories grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         {categories.map((cat) => (
           <Link
             key={cat.slug}
             href={`/catalog/${cat.slug}`}
-            className="group bg-light border border-neutral-200 hover:border-accent transition-all duration-200 p-6"
+            className="group block bg-white border border-neutral-200 overflow-hidden hover:border-[#c8956c]/40 transition-all duration-300"
           >
-            <h2 className="font-semibold text-primary group-hover:text-accent transition-colors mb-1">
-              {cat.name}
-            </h2>
-            <p className="text-xs text-neutral-400 mb-3">
-              {cat.productCount} товаров
-            </p>
-            <p className="text-sm text-neutral-500 line-clamp-2">
-              {cat.description}
-            </p>
-            <span className="inline-block mt-4 text-sm text-accent font-medium">
-              Перейти &rarr;
-            </span>
+            <div className="aspect-[4/3] relative overflow-hidden">
+              <Image
+                src={cat.image}
+                alt={cat.name}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <p className="absolute bottom-3 left-4 text-white/70 text-xs font-medium">
+                {cat.productCount} товаров
+              </p>
+            </div>
+            <div className="p-5">
+              <h2 className="font-semibold text-primary group-hover:text-[#c8956c] transition-colors mb-1">
+                {cat.name}
+              </h2>
+              <p className="text-sm text-neutral-500 line-clamp-2">
+                {cat.description}
+              </p>
+            </div>
           </Link>
         ))}
       </div>
@@ -47,8 +57,8 @@ export default function CatalogPage() {
       {/* All products */}
       <h2 className="text-2xl font-bold mb-6">Все товары</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {products.map((product, index) => (
+          <AnimatedProductCard key={product.id} product={product} index={index} />
         ))}
       </div>
     </div>
