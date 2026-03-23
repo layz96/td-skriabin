@@ -103,6 +103,12 @@ export default function Header() {
               Бренды
             </Link>
             <Link
+              href="/calculator"
+              className="text-sm font-medium text-primary hover:text-accent transition-colors"
+            >
+              Калькулятор
+            </Link>
+            <Link
               href="/about"
               className="text-sm font-medium text-primary hover:text-accent transition-colors"
             >

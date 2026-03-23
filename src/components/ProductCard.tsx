@@ -12,10 +12,10 @@ export default function ProductCard({ product }: { product: Product }) {
     <>
       <div className="product-card bg-white border border-neutral-200 group">
         <Link href={`/product/${product.slug}`}>
-          <div className="aspect-square bg-gray-warm relative overflow-hidden">
+          <div className="aspect-[4/3] bg-gray-warm relative overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center text-neutral-400">
               <svg
-                className="w-16 h-16 opacity-30"
+                className="w-20 h-20 opacity-20"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -29,37 +29,50 @@ export default function ProductCard({ product }: { product: Product }) {
               </svg>
             </div>
             {product.inStock && (
-              <span className="absolute top-3 left-3 bg-green-600 text-white text-[10px] px-2 py-0.5 font-medium">
+              <span className="absolute top-3 left-3 bg-green-600 text-white text-[11px] px-2.5 py-1 font-medium">
                 В наличии
               </span>
             )}
           </div>
         </Link>
 
-        <div className="p-4">
-          <p className="text-[11px] text-neutral-400 mb-1">{product.brand}</p>
+        <div className="p-5">
+          <p className="text-xs text-accent font-medium mb-1.5">
+            {product.brand}
+          </p>
           <Link href={`/product/${product.slug}`}>
-            <h3 className="text-sm font-medium text-primary mb-3 leading-snug group-hover:text-accent transition-colors line-clamp-2">
+            <h3 className="text-base font-semibold text-primary mb-3 leading-snug group-hover:text-accent transition-colors line-clamp-2 min-h-[2.75rem]">
               {product.name}
             </h3>
           </Link>
 
-          <div className="flex items-baseline gap-2 mb-4">
-            <span className="text-lg font-bold">
-              от {product.pricePerUnit} ₽
-            </span>
-            <span className="text-xs text-neutral-400">/{product.unit}</span>
+          {/* Key specs inline */}
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500 mb-4">
+            {product.specs["Формат"] && (
+              <span>{product.specs["Формат"]}</span>
+            )}
+            {product.specs["Морозостойкость"] && (
+              <span>{product.specs["Морозостойкость"]}</span>
+            )}
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-neutral-500 mb-4">
-            <span>
-              от {product.pricePerSqm.toLocaleString("ru-RU")} ₽/м²
+          <div className="flex items-baseline justify-between mb-4 pt-3 border-t border-neutral-100">
+            <div>
+              <span className="text-xl font-bold">
+                от {product.pricePerUnit} ₽
+              </span>
+              <span className="text-xs text-neutral-400 ml-1">
+                /{product.unit}
+              </span>
+            </div>
+            <span className="text-xs text-neutral-400">
+              {product.pricePerSqm.toLocaleString("ru-RU")} ₽/м²
             </span>
           </div>
 
           <button
             onClick={() => setModalOpen(true)}
-            className="btn-primary w-full text-xs py-2.5"
+            className="btn-accent w-full text-xs py-3"
           >
             Оставить заявку
           </button>

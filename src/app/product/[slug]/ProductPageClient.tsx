@@ -12,6 +12,7 @@ export default function ProductPageClient({ slug }: { slug: string }) {
   const [modalType, setModalType] = useState<"request" | "calculate">(
     "request"
   );
+  const [activeTab, setActiveTab] = useState<"specs" | "description">("specs");
 
   const product = products.find((p) => p.slug === slug);
   if (!product) notFound();
@@ -21,7 +22,7 @@ export default function ProductPageClient({ slug }: { slug: string }) {
     .filter(
       (p) => p.categorySlug === product.categorySlug && p.id !== product.id
     )
-    .slice(0, 4);
+    .slice(0, 3);
 
   const openModal = (type: "request" | "calculate") => {
     setModalType(type);
@@ -41,116 +42,196 @@ export default function ProductPageClient({ slug }: { slug: string }) {
         ]}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
-        {/* Image */}
-        <div className="aspect-square bg-gray-warm relative">
-          <div className="absolute inset-0 flex items-center justify-center text-neutral-400">
-            <svg
-              className="w-24 h-24 opacity-20"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-12 mb-16">
+        {/* Left: Image + tabs */}
+        <div>
+          {/* Main image */}
+          <div className="aspect-[4/3] bg-gray-warm relative mb-4">
+            <div className="absolute inset-0 flex items-center justify-center text-neutral-400">
+              <svg
+                className="w-32 h-32 opacity-15"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1}
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            {product.inStock && (
+              <span className="absolute top-4 left-4 bg-green-600 text-white text-sm px-4 py-1.5 font-medium">
+                В наличии
+              </span>
+            )}
           </div>
-          {product.inStock && (
-            <span className="absolute top-4 left-4 bg-green-600 text-white text-xs px-3 py-1 font-medium">
-              В наличии
-            </span>
-          )}
+
+          {/* Thumbnail strip */}
+          <div className="flex gap-2">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className={`w-20 h-20 bg-gray-warm border-2 cursor-pointer ${
+                  i === 1 ? "border-accent" : "border-transparent"
+                }`}
+              >
+                <div className="w-full h-full flex items-center justify-center text-neutral-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Tabs: Specs / Description */}
+          <div className="mt-10">
+            <div className="flex border-b border-neutral-200">
+              <button
+                onClick={() => setActiveTab("specs")}
+                className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
+                  activeTab === "specs"
+                    ? "border-accent text-accent"
+                    : "border-transparent text-neutral-500 hover:text-primary"
+                }`}
+              >
+                Характеристики
+              </button>
+              <button
+                onClick={() => setActiveTab("description")}
+                className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
+                  activeTab === "description"
+                    ? "border-accent text-accent"
+                    : "border-transparent text-neutral-500 hover:text-primary"
+                }`}
+              >
+                Описание
+              </button>
+            </div>
+
+            <div className="py-6">
+              {activeTab === "specs" ? (
+                <table className="w-full text-sm">
+                  <tbody>
+                    {Object.entries(product.specs).map(([key, value], i) => (
+                      <tr
+                        key={key}
+                        className={i % 2 === 0 ? "bg-light" : "bg-white"}
+                      >
+                        <td className="px-4 py-3 text-neutral-500 w-1/2">
+                          {key}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-right">
+                          {value}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <div className="text-sm text-neutral-600 leading-relaxed space-y-4">
+                  <p>{product.description}</p>
+                  <p>
+                    Материал доступен к заказу со склада в Москве или напрямую
+                    от производителя. Для крупных объёмов действуют специальные
+                    условия — свяжитесь с менеджером для расчёта.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
-        {/* Info */}
-        <div>
-          <p className="text-sm text-accent font-medium mb-2">
-            {product.brand}
-          </p>
-          <h1 className="text-2xl lg:text-3xl font-bold mb-6">
-            {product.name}
-          </h1>
-
-          <div className="bg-light p-6 mb-6">
-            <div className="flex items-baseline gap-3 mb-2">
-              <span className="text-3xl font-bold">
-                от {product.pricePerUnit} ₽
-              </span>
-              <span className="text-neutral-500">/{product.unit}</span>
-            </div>
-            <p className="text-sm text-neutral-500">
-              от {product.pricePerSqm.toLocaleString("ru-RU")} ₽ за м²
+        {/* Right: Sticky sidebar */}
+        <div className="lg:sticky lg:top-24 lg:self-start">
+          <div className="border border-neutral-200 p-6">
+            <p className="text-sm text-accent font-medium mb-1">
+              {product.brand}
             </p>
-          </div>
+            <h1 className="text-2xl font-bold mb-6">{product.name}</h1>
 
-          <p className="text-sm text-neutral-600 leading-relaxed mb-8">
-            {product.description}
-          </p>
+            <div className="bg-primary text-white p-5 mb-6">
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-3xl font-bold">
+                  от {product.pricePerUnit} ₽
+                </span>
+                <span className="text-neutral-400">/{product.unit}</span>
+              </div>
+              <p className="text-sm text-neutral-400">
+                от {product.pricePerSqm.toLocaleString("ru-RU")} ₽ за м²
+              </p>
+            </div>
 
-          {/* Specs table */}
-          <div className="mb-8">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-500 mb-4">
-              Характеристики
-            </h3>
-            <table className="w-full text-sm">
-              <tbody>
-                {Object.entries(product.specs).map(([key, value], i) => (
-                  <tr
-                    key={key}
-                    className={i % 2 === 0 ? "bg-light" : "bg-white"}
-                  >
-                    <td className="px-4 py-2.5 text-neutral-500">{key}</td>
-                    <td className="px-4 py-2.5 font-medium text-right">
-                      {value}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            {/* Quick specs */}
+            <div className="space-y-2 mb-6 text-sm">
+              {product.specs["Формат"] && (
+                <div className="flex justify-between">
+                  <span className="text-neutral-500">Формат</span>
+                  <span className="font-medium">{product.specs["Формат"]}</span>
+                </div>
+              )}
+              {product.specs["Морозостойкость"] && (
+                <div className="flex justify-between">
+                  <span className="text-neutral-500">Морозостойкость</span>
+                  <span className="font-medium">
+                    {product.specs["Морозостойкость"]}
+                  </span>
+                </div>
+              )}
+              {product.specs["Водопоглощение"] && (
+                <div className="flex justify-between">
+                  <span className="text-neutral-500">Водопоглощение</span>
+                  <span className="font-medium">
+                    {product.specs["Водопоглощение"]}
+                  </span>
+                </div>
+              )}
+            </div>
 
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <button
-              onClick={() => openModal("request")}
-              className="btn-accent flex-1 py-4"
-            >
-              Оставить заявку
-            </button>
-            <button
-              onClick={() => openModal("calculate")}
-              className="btn-outline flex-1 py-4"
-            >
-              Получить расчёт
-            </button>
-          </div>
-
-          {/* Quick contact */}
-          <div className="mt-8 pt-6 border-t border-neutral-200">
-            <p className="text-xs text-neutral-500 mb-2">Отдел продаж</p>
-            <a
-              href="tel:+79165440624"
-              className="text-lg font-semibold hover:text-accent transition-colors"
-            >
-              8 (916) 544-06-24
-            </a>
-            <div className="flex gap-3 mt-3">
-              <a
-                href="https://t.me/"
-                className="text-xs text-accent hover:underline"
+            {/* CTA */}
+            <div className="space-y-3">
+              <button
+                onClick={() => openModal("request")}
+                className="btn-accent w-full py-4 text-sm"
               >
-                Telegram
-              </a>
-              <a
-                href="https://wa.me/"
-                className="text-xs text-accent hover:underline"
+                Оставить заявку
+              </button>
+              <button
+                onClick={() => openModal("calculate")}
+                className="btn-outline w-full py-4 text-sm"
               >
-                WhatsApp
+                Получить расчёт
+              </button>
+            </div>
+
+            {/* Contact */}
+            <div className="mt-6 pt-6 border-t border-neutral-200">
+              <p className="text-xs text-neutral-400 mb-2">
+                Персональный менеджер
+              </p>
+              <a
+                href="tel:+79165440624"
+                className="text-lg font-bold hover:text-accent transition-colors block mb-3"
+              >
+                8 (916) 544-06-24
               </a>
+              <div className="flex gap-2">
+                <a
+                  href="https://t.me/"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-light text-sm font-medium hover:bg-gray-warm transition-colors"
+                >
+                  Telegram
+                </a>
+                <a
+                  href="https://wa.me/"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-light text-sm font-medium hover:bg-gray-warm transition-colors"
+                >
+                  WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -159,8 +240,8 @@ export default function ProductPageClient({ slug }: { slug: string }) {
       {/* Related products */}
       {relatedProducts.length > 0 && (
         <section className="py-12 border-t border-neutral-200">
-          <h2 className="text-2xl font-bold mb-6">Похожие товары</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="text-2xl font-bold mb-8">Похожие товары</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {relatedProducts.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

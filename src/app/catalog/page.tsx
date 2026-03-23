@@ -21,7 +21,7 @@ export default function CatalogPage() {
       </p>
 
       {/* Categories grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {categories.map((cat) => (
           <Link
             key={cat.slug}
@@ -46,7 +46,7 @@ export default function CatalogPage() {
 
       {/* All products */}
       <h2 className="text-2xl font-bold mb-6">Все товары</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
